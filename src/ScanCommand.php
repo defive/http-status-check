@@ -44,6 +44,12 @@ class ScanCommand extends Command
                 'Dont crawl external links'
             )
             ->addOption(
+                'execute-javascript',
+                'j',
+                InputOption::VALUE_NONE,
+                'Execute Javascript'
+            )
+            ->addOption(
                 'html-only',
                 'h',
                 InputOption::VALUE_NONE,
@@ -155,6 +161,10 @@ class ScanCommand extends Command
             $crawler->ignoreRobots();
         }
         
+        if ($input->getOption('execute-javascript')) {
+            $crawler->executeJavascript();   
+        }
+
         if ($input->getOption('html-only')) {
             $crawler->->setParseableMimeTypes(['text/html']);
         }
