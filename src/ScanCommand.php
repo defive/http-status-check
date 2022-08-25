@@ -50,6 +50,12 @@ class ScanCommand extends Command
                 'Execute Javascript'
             )
             ->addOption(
+                'html-only',
+                'h',
+                InputOption::VALUE_NONE,
+                'Only crawl HTML pages'
+            )
+            ->addOption(
                 'timeout',
                 't',
                 InputOption::VALUE_OPTIONAL,
@@ -157,6 +163,10 @@ class ScanCommand extends Command
         
         if ($input->getOption('execute-javascript')) {
             $crawler->executeJavascript();   
+        }
+
+        if ($input->getOption('html-only')) {
+            $crawler->->setParseableMimeTypes(['text/html']);
         }
 
         $crawler->startCrawling($baseUrl);
