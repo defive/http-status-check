@@ -166,7 +166,7 @@ class ScanCommand extends Command
         }
 
         if ($input->getOption('html-only')) {
-            $crawler->->setParseableMimeTypes(['text/html']);
+            $crawler->setParseableMimeTypes(['text/html']);
         }
 
         $crawler->startCrawling($baseUrl);
