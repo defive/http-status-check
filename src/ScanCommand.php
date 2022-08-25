@@ -51,7 +51,7 @@ class ScanCommand extends Command
             )
             ->addOption(
                 'html-only',
-                'h',
+                'html',
                 InputOption::VALUE_NONE,
                 'Only crawl HTML pages'
             )
