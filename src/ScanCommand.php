@@ -44,6 +44,12 @@ class ScanCommand extends Command
                 'Dont crawl external links'
             )
             ->addOption(
+                'html-only',
+                'h',
+                InputOption::VALUE_NONE,
+                'Only crawl HTML pages'
+            )
+            ->addOption(
                 'timeout',
                 't',
                 InputOption::VALUE_OPTIONAL,
@@ -147,6 +153,10 @@ class ScanCommand extends Command
 
         if ($input->getOption('ignore-robots')) {
             $crawler->ignoreRobots();
+        }
+        
+        if ($input->getOption('html-only')) {
+            $crawler->->setParseableMimeTypes(['text/html']);
         }
 
         $crawler->startCrawling($baseUrl);
