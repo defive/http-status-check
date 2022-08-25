@@ -44,6 +44,12 @@ class ScanCommand extends Command
                 'Dont crawl external links'
             )
             ->addOption(
+                'execute-javascript',
+                'j',
+                InputOption::VALUE_NONE,
+                'Execute Javascript'
+            )
+            ->addOption(
                 'timeout',
                 't',
                 InputOption::VALUE_OPTIONAL,
@@ -147,6 +153,10 @@ class ScanCommand extends Command
 
         if ($input->getOption('ignore-robots')) {
             $crawler->ignoreRobots();
+        }
+        
+        if ($input->getOption('execute-javascript')) {
+            $crawler->executeJavascript();   
         }
 
         $crawler->startCrawling($baseUrl);
